@@ -41,6 +41,8 @@ public class Server extends Application  {
         launch(args);
 
     }
+
+
     //Method that prints the Menu in console for user
     public boolean printMenu(){
         //Creates a String 2-dimensional array with menu contents
