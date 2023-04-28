@@ -3,6 +3,8 @@ package edu.sdccd.cisc191.template;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.layout.VBox;
@@ -64,6 +66,12 @@ public class Client extends Application {
 
         Button spriteDrink;
 
+//        //Create radio button
+//        RadioButton dineIn;
+//        RadioButton takeOut;
+
+
+
         // Sets stage name title
         primaryStage.setTitle("Food Menu");
 
@@ -73,6 +81,12 @@ public class Client extends Application {
         pizzaFood = new Button("Purchase Pizza");
         cokeDrink = new Button("Purchase Coke");
         spriteDrink = new Button("Purchase Sprite");
+
+//        //Initialize radio buttons
+//        dineIn = new RadioButton("Dine-In");
+//        takeOut = new RadioButton ("Take Out");
+
+
 
         //Creates objects from specified classes
         Burger b = new Burger();
@@ -106,11 +120,15 @@ public class Client extends Application {
         //Created VBox object
         VBox foodLeft = new VBox();
         // Takes children(button) into the VBox
-        foodLeft.getChildren().addAll(burgerFood, pizzaFood);
+        foodLeft.getChildren().addAll(burgerFood, pizzaFood);//, dineIn, takeOut);
+
         //Creates another VBox object
         VBox drinkRight = new VBox();
         // Takes children(button) into the VBox
         drinkRight.getChildren().addAll(cokeDrink, spriteDrink);
+
+        //Adding the toggle button to the pane
+
 
         // Creates BorderPane Object to place buttons in the specified place
         BorderPane borderPane = new BorderPane();
@@ -122,7 +140,7 @@ public class Client extends Application {
         borderPane.setCenter(showMenu);
 
         // Creates a scene where all the buttons are placed
-        Scene scene = new Scene(borderPane, 300, 250);
+        Scene scene = new Scene(borderPane, 400, 250);
         primaryStage.setScene(scene);
         // Displays the stage to its users
         primaryStage.show();
