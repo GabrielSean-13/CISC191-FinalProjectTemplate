@@ -22,7 +22,7 @@ public class Burger extends Food implements Order, Serializable {
     public boolean payInCash() {
         foodList.add("Burger");
         foodChose();
-        System.out.println(" The total is "+ "$" + foodPrice + " and includes " + foodCalories +" calories, paid in cash");
+        System.out.println(" The total is "+ "$" + foodPrice*foodList.size() + " and includes " + foodCalories*foodList.size() +" calories, paid in cash");
         System.out.println("Number of Burgers ordered " + foodList.size());
         return true ;
     }

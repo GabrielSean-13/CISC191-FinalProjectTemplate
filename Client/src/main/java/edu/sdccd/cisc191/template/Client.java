@@ -1,8 +1,10 @@
 package edu.sdccd.cisc191.template;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
@@ -66,10 +68,10 @@ public class Client extends Application {
 
         Button spriteDrink;
 
-//        //Create radio button
-//        RadioButton dineIn;
-//        RadioButton takeOut;
 
+        //Create radio button
+        RadioButton dineIn;
+        RadioButton takeOut;
 
 
         // Sets stage name title
@@ -82,10 +84,9 @@ public class Client extends Application {
         cokeDrink = new Button("Purchase Coke");
         spriteDrink = new Button("Purchase Sprite");
 
-//        //Initialize radio buttons
-//        dineIn = new RadioButton("Dine-In");
-//        takeOut = new RadioButton ("Take Out");
-
+        //Initialize radio buttons
+        dineIn = new RadioButton("Dine-In");
+        takeOut = new RadioButton ("Take Out");
 
 
         //Creates objects from specified classes
@@ -120,14 +121,12 @@ public class Client extends Application {
         //Created VBox object
         VBox foodLeft = new VBox();
         // Takes children(button) into the VBox
-        foodLeft.getChildren().addAll(burgerFood, pizzaFood);//, dineIn, takeOut);
+        foodLeft.getChildren().addAll(burgerFood, pizzaFood, dineIn, takeOut);
 
         //Creates another VBox object
         VBox drinkRight = new VBox();
         // Takes children(button) into the VBox
         drinkRight.getChildren().addAll(cokeDrink, spriteDrink);
-
-        //Adding the toggle button to the pane
 
 
         // Creates BorderPane Object to place buttons in the specified place

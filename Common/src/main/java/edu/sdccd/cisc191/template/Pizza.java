@@ -19,7 +19,7 @@ public class Pizza extends Food implements Order, Serializable {
     public boolean payInCash() {
         foodList.add("Pizza");
         foodChose();
-        System.out.println(" The total is "+ "$" + foodPrice + " and includes " + foodCalories +" calories, paid in cash");
+        System.out.println(" The total is "+ "$" + foodPrice*foodList.size() + " and includes " + foodCalories*foodList.size() +" calories, paid in cash");
         System.out.println("Number of Pizza ordered is " + foodList.size());
         return true;
     }

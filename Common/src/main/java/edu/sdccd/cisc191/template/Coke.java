@@ -19,7 +19,7 @@ public class Coke extends Drink implements Order, Serializable {
     public boolean payInCash() {
         drinkList.add("Coke");
         drinkChose();
-        System.out.println(" The total is "+ "$" + drinkPrice + " and includes " + drinkCalories +" calories, paid in cash");
+        System.out.println(" The total is "+ "$" + drinkPrice*drinkList.size() + " and includes " + drinkCalories*drinkList.size() +" calories, paid in cash");
         System.out.println("Number of coke ordered " + drinkList.size());
         return true;
     }
