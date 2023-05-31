@@ -8,36 +8,25 @@ import javafx.stage.Stage;
 import javafx.scene.layout.VBox;
 
 import java.util.Arrays;
-import java.util.HashMap;
+
 
 import java.net.*;
 import java.io.*;
-import java.nio.file.FileSystemNotFoundException;
-
-/**
- * This program opens a connection to a computer specified
- * as the first command-line argument.  If no command-line
- * argument is given, it prompts the user for a computer
- * to connect to.  The connection is made to
- * the port specified by LISTENING_PORT.  The program reads one
- * line of text from the connection and then closes the
- * connection.  It displays the text that it read on
- * standard output.  This program is meant to be used with
- * the server program, DateServer, which sends the current
- * date and time on the computer where the server is running.
- */
-
-public class Client extends Application {
 
 
-   //Method that prints the Menu in console for user
-   public boolean printMenu() {
-       //Convert a for loop over an 2D array into Stream API.
-       String [][] arrayTwo = {{" Burger == $5.99", " Pizza == $7.99"},{" Coke == $0.99", " Sprite == $0.99"}};
-       Arrays.stream(arrayTwo).map(a -> String.join(" ", a))
-               .forEach(System.out::println);
-       return true;
-   }
+
+// Second Client JavaFX
+public class SecondClient extends Application {
+
+
+    //Method that prints the Menu in console for user
+    public boolean printMenu() {
+        //Convert a for loop over an 2D array into Stream API.
+        String [][] arrayTwo = {{" Burger == $5.99", " Pizza == $7.99"},{" Coke == $0.99", " Sprite == $0.99"}};
+        Arrays.stream(arrayTwo).map(a -> String.join(" ", a))
+                .forEach(System.out::println);
+        return true;
+    }
 
     // Method that contains all contents of the stage, and starts it
     @Override
@@ -71,20 +60,6 @@ public class Client extends Application {
         Coke c = new Coke();
         Sprite s = new Sprite();
 
-        // Saves Objects in Disk
-        try (FileOutputStream fs = new FileOutputStream("objects.txt")) {
-            ObjectOutputStream os = new ObjectOutputStream(fs);
-
-            os.writeObject(b);
-            os.writeObject(p);
-            os.writeObject(c);
-            os.writeObject(s);
-            os.close();
-        } catch (FileSystemNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         // Creates button objects for event handling, and also labels the buttons in the parameter
         showMenu.setOnAction( e -> printMenu());
@@ -122,39 +97,17 @@ public class Client extends Application {
 
     // Main Code Method
     public static void main(String[] args) throws Exception {
-        // Launches javafx Program
+        // Launches second javafx Program
         launch(args);
 
         //Creates connection to Server
         Socket socket = new Socket("localhost", 8080);
         PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
-        printWriter.println("Finished Using the Menu, Thank you!");
+        printWriter.println("I have finished using the Menu, Thank you very much!");
         printWriter.flush();
-
-        // Reads files saved from disk
-        try (FileInputStream fi = new FileInputStream("objects.txt")) {
-            ObjectInputStream os = new ObjectInputStream(fi);
-
-            Burger b1 = (Burger)os.readObject();
-            Pizza p1 = (Pizza)os.readObject();
-            Coke c1 = (Coke)os.readObject();
-            Sprite s1 = (Sprite)os.readObject();
-            System.out.println(b1.foodChose());
-            System.out.println(p1.foodChose());
-            System.out.println(c1.drinkChose());
-            System.out.println(s1.drinkChose());
-
-            os.close();
-
-        } catch (FileSystemNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
 
 
     }
 }
+
 

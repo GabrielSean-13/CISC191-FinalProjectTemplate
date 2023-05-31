@@ -24,27 +24,33 @@ import java.net.Socket;
  * to process the connection.
  */
 
-// Course Objectives: Module 4-10
+// Course Objectives: Module 4-10, 13&15
 
 // creates class that extends "Application" to access Javafx imports
 public class Server {
-    //private static final int PORT = 4999;
+
     public static void main(String[] args) throws IOException {
+        // Makes a connection to client and accepts it
+        ServerSocket serverSocket = null;
 
-// Makes a connection to client and accepts it
-        ServerSocket serverSocket = new ServerSocket(4999);
-        Socket s = serverSocket.accept();
+       boolean  listeningSocket = true;
+        try {
+            serverSocket = new ServerSocket(8080);
+        } catch (IOException e) {
+            System.err.println("Could not listen on port: 2343");
+        }
 
-        InputStreamReader in = new InputStreamReader(s.getInputStream());
-        BufferedReader bf = new BufferedReader(in);
-
-        String str = bf.readLine();
-        System.out.println("Client : " + str);
-
-
+        while(listeningSocket){
+            Socket clientSocket = serverSocket.accept();
+            MiniServer mini = new MiniServer(clientSocket);
+            mini.start();
+        }
+        serverSocket.close();
+    }
     }
 
-}
+
+
 
 
 
